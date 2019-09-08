@@ -67,6 +67,32 @@ typedef void (^TWTRAuthenticationCompletionHandler)(id<TWTRSessionStore> session
 - (void)tweetView:(TWTRTweetView *)tweetView didTapURL:(NSURL *)url;
 
 /**
+ *  A hashtag in the text of a tweet was tapped. Implement to show your own webview rather than opening Safari.
+ *
+ *  @param tweetView The Tweet view that was tapped.
+ *  @param hashtag       The hashtag that was tapped.
+ */
+- (void)tweetView:(TWTRTweetView *)tweetView didTapHashtag:(NSString *)hashtag;
+
+/**
+ *  A cashtag in the text of a tweet was tapped. Implement to show your own webview rather than opening Safari.
+ *
+ *  @param tweetView The Tweet view that was tapped.
+ *  @param cashtag       The cashtag that was tapped.
+ */
+- (void)tweetView:(TWTRTweetView *)tweetView didTapCashtag:(NSString *)cashtag;
+
+/**
+ *  A mention in the text of a tweet was tapped. Implement to show your own webview rather than opening Safari.
+ *
+ *  @param tweetView The Tweet view that was tapped.
+ *  @param userID        The user id of the mention that was tapped.
+ *  @param screenName    The screen name of the mention that was tapped.
+ *  @param name          The name of the mention that was tapped.
+ */
+- (void)tweetView:(TWTRTweetView *)tweetView didTapUserMention:(NSString *)userID screenName:(NSString *)screenName name:(NSString *)name;
+
+/**
  *  Called when the user's profile image is tapped.
  *  If this method is not implemented, the default behavior is to deep link into Twitter application or twitter.com in a webview.
  *
