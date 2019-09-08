@@ -42,6 +42,9 @@
 #import "TWTRTweetPresenter.h"
 #import "TWTRTweetRepository.h"
 #import "TWTRTweetUrlEntity.h"
+#import "TWTRTweetHashtagEntity.h"
+#import "TWTRTweetCashtagEntity.h"
+#import "TWTRTweetUserMentionEntity.h"
 #import "TWTRTweetViewMetrics.h"
 #import "TWTRTweetView_Private.h"
 #import "TWTRTweet_Private.h"
@@ -622,7 +625,7 @@ static TWTRTweetViewTheme const TWTRTweetViewDefaultTheme = TWTRTweetViewThemeLi
 {
     NSString *hashtag = hashtagEntity.text;
     if ([self.delegate respondsToSelector:@selector(tweetView:didTapHashtag:)]) {
-        [self.delegate tweetView:self, didTapHashtag:hashtag];
+        [self.delegate tweetView:self didTapHashtag:hashtag];
     } else {
         [TWTRTweetDelegationHelper performDefaultActionForTappingHashtag:hashtagEntity];
     }
@@ -632,7 +635,7 @@ static TWTRTweetViewTheme const TWTRTweetViewDefaultTheme = TWTRTweetViewThemeLi
 {
     NSString *cashtag = cashtagEntity.text;
     if ([self.delegate respondsToSelector:@selector(tweetView:didTapCashtag:)]) {
-        [self.delegate tweetView:self, didTapCashtag:cashtag];
+        [self.delegate tweetView:self didTapCashtag:cashtag];
     } else {
         [TWTRTweetDelegationHelper performDefaultActionForTappingCashtag:cashtagEntity];
     }
@@ -644,7 +647,7 @@ static TWTRTweetViewTheme const TWTRTweetViewDefaultTheme = TWTRTweetViewThemeLi
     NSString *screenName = userMentionEntity.screenName;
     NSString *name = userMentionEntity.name;
     if ([self.delegate respondsToSelector:@selector(tweetView:didTapUserMention:screenName:name:)]) {
-        [self.delegate tweetView:self, didTapUserMention:userID screenName:screenName name:name];
+        [self.delegate tweetView:self didTapUserMention:userID screenName:screenName name:name];
     } else {
         [TWTRTweetDelegationHelper performDefaultActionForTappingUserMention:userMentionEntity];
     }
